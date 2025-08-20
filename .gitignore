@@ -1,0 +1,338 @@
+# ==================== ARQUIVOS DE CONFIGURAÇÃO SENSÍVEIS ====================
+# Variáveis de ambiente (NUNCA committar!)
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+*.env
+
+# Arquivos de configuração com tokens/senhas
+config.json
+config.yaml
+config.yml
+settings.json
+secrets.json
+token.txt
+bot_token.txt
+
+# ==================== PYTHON ====================
+# Bytecode compilado
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribuição / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ==================== DATABASES ====================
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# PostgreSQL
+*.dump
+
+# MongoDB
+*.bson
+
+# Redis dumps
+dump.rdb
+
+# ==================== LOGS E DADOS TEMPORÁRIOS ====================
+# Arquivos de log
+*.log
+logs/
+log/
+*.log.*
+*.out
+
+# Arquivos temporários
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Backups
+*.bak
+*.backup
+backup/
+backups/
+
+# Cache do bot
+cache/
+*.cache
+
+# Arquivos de dados do bot (opcional - dependendo do seu caso)
+data/
+user_data/
+guild_data/
+bot_data.json
+statistics.json
+
+# ==================== IDEs E EDITORES ====================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Atom
+.atom/
+
+# ==================== SISTEMAS OPERACIONAIS ====================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+
+# ==================== DISCORD BOT ESPECÍFICOS ====================
+# Tokens e chaves de API
+discord_token.txt
+bot_token
+api_keys.json
+client_secret.json
+oauth.json
+
+# Dados persistentes do bot
+persistent_data/
+saved_data/
+user_settings/
+server_configs/
+
+# Arquivos de música/audio (se for music bot)
+music/
+audio/
+songs/
+*.mp3
+*.wav
+*.ogg
+*.m4a
+*.flac
+
+# Imagens/assets temporários
+images/temp/
+temp_images/
+generated_images/
+downloads/
+
+# Arquivos de queue/fila
+queue_data.json
+music_queue.pkl
+
+# ==================== DOCKER ====================
+# Docker
+Dockerfile.dev
+docker-compose.dev.yml
+.dockerignore
+
+# ==================== HEROKU ====================
+# Heroku
+.env.local
+.env.production
+
+# ==================== NODE.JS (caso use ferramentas JS) ====================
+# Node modules (se usar npm para algumas ferramentas)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ==================== OUTROS ====================
+# Arquivos comprimidos
+*.zip
+*.rar
+*.7z
+*.tar.gz
+*.tar.bz2
+
+# Certificados SSL
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+*.pfx
+
+# Arquivos grandes de exemplo
+example_large_file.*
+test_data_large.*
+
+# Pasta de testes locais
+local_tests/
+test_env/
+
+# Arquivos de sessão
+*.session
+session_*
+
+# Webhook URLs
+webhooks.txt
+webhook_urls.json
+
+# ==================== COMENTÁRIOS ÚTEIS ====================
+
+# DICA: Para adicionar exceções, use !
+# Exemplo: Se você quer commitar um config.json de exemplo:
+# config.json
+# !config.example.json
+
+# DICA: Para pastas inteiras mas manter a estrutura:
+# data/*
+# !data/.gitkeep
+
+# DICA: Para ignorar arquivos por extensão em subpastas:
+# **/*.log
+
+# ==================== EXEMPLO DE USO COM EXCEÇÕES ====================
+# Ignorar todos os configs mas manter exemplos
+# config.json
+# !config.example.json
+# !config.template.json
+
+# Ignorar dados mas manter estrutura
+# data/*
+# !data/.gitkeep
