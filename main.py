@@ -19,6 +19,7 @@ intents.members = True
 # Cria o bot
 bot = commands.Bot(command_prefix="!", intents=intents)     
 
+@bot.event
 async def on_ready():
     print(f"{bot.user} está online!")
     print(f"Conectado a {len(bot.guilds)} servidores")
