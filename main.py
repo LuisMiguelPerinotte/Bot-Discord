@@ -7,8 +7,7 @@ import os
 
 # Carregar Key 
 load_dotenv()
-api_key = os.getenv("key") 
-
+api_key = os.getenv("Discord_API_Key") 
 
 # Definir Intents
 intents = discord.Intents.default()
@@ -27,6 +26,9 @@ async def on_ready():
 # Carrega os cogs
 async def load_cogs():
     await bot.load_extension("cogs.commands.general")
+    await bot.load_extension("cogs.commands.apis_commands")
+    await bot.load_extension("cogs.commands.fun_commands")
+
     await bot.load_extension("cogs.events.message_events")
 
 # Fução principal para exucutar o Bot    
