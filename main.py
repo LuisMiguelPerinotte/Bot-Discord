@@ -20,6 +20,8 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
+    sincs = await bot.tree.sync()
+    print(f"{len(sincs)} comandos sincronizados!")
     print(f"{bot.user} está online!")
     print(f"Conectado a {len(bot.guilds)} servidores")
 
@@ -30,6 +32,10 @@ async def load_cogs():
     await bot.load_extension("cogs.commands.fun_commands")
 
     await bot.load_extension("cogs.events.message_events")
+
+@bot.tree.command()
+async def diga_ola(interact:discord.Interaction):
+    await interact.response.send_message(f"Olá, {interact.user.mention}!")
 
 # Fução principal para exucutar o Bot    
 async def main():
