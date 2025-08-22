@@ -15,5 +15,18 @@ class Message_events(commands.Cog):
         if "pinto" in content:
             await message.add_reaction("🍆")
         
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        channel = self.bot.get_channel("https://discord.com/channels/1006871049251594340/1407833723763822672")
+
+        if channel:
+            embed = discord.Embed(
+                title="Bem Vindo(a) 🎉",
+                description=f"Olá {member.mention}, seja bem-vindo(a) ao servidor!",
+                color=discord.Color.green()
+            )
+            embed.set_thumbnail(url=member.avatar.url)  
+            await channel.send(embed=embed)
+
 async def setup(bot):
     await bot.add_cog(Message_events(bot))

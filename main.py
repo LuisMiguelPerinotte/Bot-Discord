@@ -18,11 +18,12 @@ intents.members = True
 # Cria o bot
 bot = commands.Bot(command_prefix="!", intents=intents)     
 
+# Informações para o terminal
 @bot.event
 async def on_ready():
     sincs = await bot.tree.sync()
-    print(f"{len(sincs)} comandos sincronizados!")
     print(f"{bot.user} está online!")
+    print(f"{len(sincs)} comandos sincronizados!")
     print(f"Conectado a {len(bot.guilds)} servidores")
 
 # Carrega os cogs
@@ -33,6 +34,7 @@ async def load_cogs():
 
     await bot.load_extension("cogs.events.message_events")
 
+# Função slash teste
 @bot.tree.command()
 async def diga_ola(interact:discord.Interaction):
     await interact.response.send_message(f"Olá, {interact.user.mention}!")
