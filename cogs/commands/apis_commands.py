@@ -1,6 +1,9 @@
 import discord
 from discord.ext import commands
+
 import requests
+from logs_generator import registrar_uso_comando
+from langdetect import detect
 
 import os
 from dotenv import load_dotenv
@@ -44,13 +47,17 @@ class Apis_Commands(commands.Cog):
         except requests.exceptions.RequestException as e:
             await ctx.send(f"Erro de conexão: {e}")
 
+        registrar_uso_comando(f"{ctx.author} usou comando !weather. city name: {city_name}")
+
 # Comando para traduzir o texto enviado
     @commands.command(name="translate")
     async def translator(self, ctx, language: str, *, text: str):
         url = "https://api.mymemory.translated.net/get"
+        idioma_origem = detect(text)
+
         params = {
             "q": text,
-            "langpair": f"pt|{language}"
+            "langpair": f"{idioma_origem}|{language}"
         }
 
         try:
@@ -71,6 +78,8 @@ class Apis_Commands(commands.Cog):
 
         except requests.exceptions.RequestException as e:
             await ctx.send(f"Erro de conexão: {e}")
+        
+        registrar_uso_comando(f"{ctx.author} usou o comando !translate. lingua: '{language}', texto: '{text}' e recebeu: '{resposta}'")
 
 # Respostas usando ia para o bot
     @commands.command(name="ia")
@@ -114,6 +123,7 @@ class Apis_Commands(commands.Cog):
             except requests.exceptions.RequestException as e:
                 await ctx.send(f"Erro de conexão: {e}")
 
+            registrar_uso_comando(f"{ctx.author} usou comando !ia. texto: '{text}'")
 
 def setup(bot):
     bot.add_cog(Apis_Commands(bot))

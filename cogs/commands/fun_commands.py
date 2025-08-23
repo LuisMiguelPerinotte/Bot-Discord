@@ -20,7 +20,7 @@ class Fun_Commands(commands.Cog):
             await ctx.send(f"Fonte '{Font}' não existe! Usando padrão.")
             result = pyfiglet.figlet_format(text, font="standard")
 
-        registrar_uso_comando(f"{ctx.author} usou ASCII com a fonte '{Font}' e texto '{text}'")
+        registrar_uso_comando(f"{ctx.author} usou comando !ascii. fonte: '{Font}', texto: '{text}'")
 
         # Envia o arquivo se o resultado for muito grande
         if len(result) > 1990:
@@ -39,6 +39,8 @@ class Fun_Commands(commands.Cog):
             description="- standard\n- slant\n- 3-d\n- 3x5\n- 5lineoblique\n- alphabet\n- banner3-D\n- doh\n- isometric1\n- letters\n- alligator\n- dotmatrix\n- bubble\n- bulbhead\n- digital  ",
             color=discord.Color.blue()
         ))
+
+        registrar_uso_comando(f"{ctx.author} usou comando ascii-fontes")
 
 def setup(bot):
     bot.add_cog(Fun_Commands(bot))

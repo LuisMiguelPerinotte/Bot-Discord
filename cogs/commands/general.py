@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from logs_generator import registrar_uso_comando
 
 class General(commands.Cog):
     
@@ -19,6 +20,8 @@ class General(commands.Cog):
         embed.add_field(name="👑 Dono", value=guild.owner.mention, inline=True)
         embed.set_thumbnail(url=guild.icon.url if guild.icon else None)
         await ctx.send(embed=embed)
+        
+        registrar_uso_comando(f"{ctx.author} usou comando !info.")
 
 # Comando Ping para ver a latencia do bot    
     @commands.command(name="ping")
@@ -31,5 +34,6 @@ class General(commands.Cog):
         )
         await ctx.send(embed=embed)
 
+        registrar_uso_comando(f"{ctx.author} usou comando !ping. ")
 def setup(bot):
     bot.add_cog(General(bot))

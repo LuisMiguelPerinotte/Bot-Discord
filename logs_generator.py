@@ -10,11 +10,10 @@ log_file = os.path.join(log_dir, f"uso_comando_{datetime.now().strftime('%Y-%m-%
 
 # Configuração do logging
 logging.basicConfig(
-    level=logging.INFO,               # nível de log
-    format="%(asctime)s - %(message)s",  # formato do log
+    level=logging.INFO,               
+    format="%(asctime)s - %(message)s", 
     handlers=[
         logging.FileHandler(log_file, encoding="utf-8"),
-        logging.StreamHandler()      # opcional: imprime no console também
     ]
 )
 
