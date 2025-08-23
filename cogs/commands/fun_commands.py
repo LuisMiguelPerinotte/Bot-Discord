@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from logs_generator import registrar_uso_comando
 
 import pyfiglet
 
@@ -18,6 +19,8 @@ class Fun_Commands(commands.Cog):
         except pyfiglet.FontNotFound:
             await ctx.send(f"Fonte '{Font}' não existe! Usando padrão.")
             result = pyfiglet.figlet_format(text, font="standard")
+
+        registrar_uso_comando(f"{ctx.author} usou ASCII com a fonte '{Font}' e texto '{text}'")
 
         # Envia o arquivo se o resultado for muito grande
         if len(result) > 1990:
