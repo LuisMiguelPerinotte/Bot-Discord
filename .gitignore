@@ -1,5 +1,5 @@
 # ==================== ARQUIVOS DE CONFIGURAÇÃO SENSÍVEIS ====================
-# Variáveis de ambiente (NUNCA committar!)
+# Variáveis de ambiente 
 .env
 .env.local
 .env.production
@@ -243,7 +243,7 @@ saved_data/
 user_settings/
 server_configs/
 
-# Arquivos de música/audio (se for music bot)
+# Arquivos de música/audio 
 music/
 audio/
 songs/
@@ -313,26 +313,4 @@ session_*
 webhooks.txt
 webhook_urls.json
 
-# ==================== COMENTÁRIOS ÚTEIS ====================
-
-# DICA: Para adicionar exceções, use !
-# Exemplo: Se você quer commitar um config.json de exemplo:
-# config.json
-# !config.example.json
-
-# DICA: Para pastas inteiras mas manter a estrutura:
-# data/*
-# !data/.gitkeep
-
-# DICA: Para ignorar arquivos por extensão em subpastas:
-# **/*.log
-
-# ==================== EXEMPLO DE USO COM EXCEÇÕES ====================
-# Ignorar todos os configs mas manter exemplos
-# config.json
-# !config.example.json
-# !config.template.json
-
-# Ignorar dados mas manter estrutura
-# data/*
-# !data/.gitkeep
+*.txt
