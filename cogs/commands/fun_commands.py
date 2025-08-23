@@ -10,23 +10,32 @@ class Fun_Commands(commands.Cog):
 
     # Comando para Artes ASCII 
     @commands.command(name="ascii")
-    async def transform_ascii(self, ctx, Font: str = "standard", *, Text: str):  
+    async def transform_ascii(self, ctx, Font: str, *, text: str):  
         
         try:
-            result = pyfiglet.figlet_format(Text, font=Font)
-        except:
+            result = pyfiglet.figlet_format(text, font=Font.lower())
+
+        except pyfiglet.FontNotFound:
             await ctx.send(f"Fonte '{Font}' não existe! Usando padrão.")
-            result = pyfiglet.figlet_format(Text, font="standard")
+            result = pyfiglet.figlet_format(text, font="standard")
 
         # Envia o arquivo se o resultado for muito grande
         if len(result) > 1990:
-            await ctx.send("Resultado Grande Demais, Enviando o Arquivo...")
+            await ctx.send(f"{ctx.author.mention} Resultado Grande Demais, Enviando o Arquivo...")
             with open("ascii.txt", "w", encoding="utf8") as f:
                 f.write(result)
             await ctx.send(file=discord.File("ascii.txt"))
 
         else:
-            await ctx.send(f"```\n{result}\n```")
+            await ctx.send(f"{ctx.author.mention}```\n{result}\n```")
 
-async def setup(bot):
-    await bot.add_cog(Fun_Commands(bot))
+    @commands.command(name="ascii-fonts")
+    async def asscii_fonts(self, ctx):
+        await ctx.send(ctx.author.mention, embed=discord.Embed(
+            title="Ascii Fonts 🧑‍🎨",
+            description="- standard\n- slant\n- 3-d\n- 3x5\n- 5lineoblique\n- alphabet\n- banner3-D\n- doh\n- isometric1\n- letters\n- alligator\n- dotmatrix\n- bubble\n- bulbhead\n- digital  ",
+            color=discord.Color.blue()
+        ))
+
+def setup(bot):
+    bot.add_cog(Fun_Commands(bot))

@@ -5,16 +5,18 @@ class Message_events(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-    
+
+# Evento reação em mensagens especificas 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message_reaction(self, message):
         if message.author.bot:
             return
         
         content = message.content.lower()
         if "pinto" in content:
             await message.add_reaction("🍆")
-        
+
+# Evento Boas-vindas
     @commands.Cog.listener()
     async def on_member_join(self, member):
         channel = self.bot.get_channel("https://discord.com/channels/1006871049251594340/1407833723763822672")
@@ -28,5 +30,5 @@ class Message_events(commands.Cog):
             embed.set_thumbnail(url=member.avatar.url)  
             await channel.send(embed=embed)
 
-async def setup(bot):
-    await bot.add_cog(Message_events(bot))
+def setup(bot):
+    bot.add_cog(Message_events(bot))

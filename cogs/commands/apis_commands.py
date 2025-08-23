@@ -115,5 +115,5 @@ class Apis_Commands(commands.Cog):
                 await ctx.send(f"Erro de conexão: {e}")
 
 
-async def setup(bot):
-    await bot.add_cog(Apis_Commands(bot))
+def setup(bot):
+    bot.add_cog(Apis_Commands(bot))
