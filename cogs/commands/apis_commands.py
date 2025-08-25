@@ -36,16 +36,16 @@ class Apis_Commands(commands.Cog):
                     umidade = resultados.get('humidity')
                     velocidade_vento = resultados.get('wind_speedy')
                     
-                    await ctx.send(ctx.author.mention, embed=discord.Embed(
+                    await ctx.reply(ctx.author.mention, embed=discord.Embed(
                         description=f"Tempo em {cidade_retornada}🏙️:\n - Condição: {descricao}\n - Temperatura: {temperatura}°C\n - Umidade: {umidade}%\n - Vento: {velocidade_vento}",
                         color=discord.Color.blue()
                     ))
                     
                 else:
-                    await ctx.send(f"Erro Ao Buscar Dados. Tente Novamente Mais Tarde!")
+                    await ctx.reply(f"Erro Ao Buscar Dados. Tente Novamente Mais Tarde!")
 
         except requests.exceptions.RequestException as e:
-            await ctx.send(f"Erro de conexão: {e}")
+            await ctx.reply(f"Erro de conexão: {e}")
 
         registrar_uso_comando(f"{ctx.author} usou comando !weather. city name: {city_name}")
 
@@ -68,16 +68,16 @@ class Apis_Commands(commands.Cog):
                 resposta = data["responseData"]["translatedText"]
 
                 if resposta:
-                    await ctx.send(ctx.author.mention, embed=discord.Embed(
+                    await ctx.reply(ctx.author.mention, embed=discord.Embed(
                         description=f"Tradução: {resposta}",
                         color=discord.Color.blue()
                     ))
             
                 else: 
-                    await ctx.send("ERRO! Algo Inesperado Aconteceu ")
+                    await ctx.reply("ERRO! Algo Inesperado Aconteceu ")
 
         except requests.exceptions.RequestException as e:
-            await ctx.send(f"Erro de conexão: {e}")
+            await ctx.reply(f"Erro de conexão: {e}")
         
         registrar_uso_comando(f"{ctx.author} usou o comando !translate. lingua: '{language}', texto: '{text}' e recebeu: '{resposta}'")
 
@@ -85,7 +85,7 @@ class Apis_Commands(commands.Cog):
     @commands.command(name="ia")
     async def chat_ia(self, ctx, *, text: str):
             try:
-                await ctx.send(embed=discord.Embed(
+                await ctx.reply(embed=discord.Embed(
                     description="Pensando...🤓☝️",
                     color=discord.Color.blue()
                 ))
@@ -110,18 +110,18 @@ class Apis_Commands(commands.Cog):
                     resposta = data["choices"][0]["message"]["content"]
 
                     if resposta:
-                        await ctx.send(ctx.author.mention, embed=discord.Embed(
+                        await ctx.reply(ctx.author.mention, embed=discord.Embed(
                             description=f"Sua Resposta Gerada Por IA:\n\n{resposta}",
                             color=discord.Color.blue()
                         ))
 
                     else: 
-                        await ctx.send("ERRO! Algo Inesperado Aconteceu ")
+                        await ctx.reply("ERRO! Algo Inesperado Aconteceu ")
                 else:
-                    await ctx.send(f"Erro na requisição! Status code: {response.status_code}")
+                    await ctx.reply(f"Erro na requisição! Status code: {response.status_code}")
 
             except requests.exceptions.RequestException as e:
-                await ctx.send(f"Erro de conexão: {e}")
+                await ctx.reply(f"Erro de conexão: {e}")
 
             registrar_uso_comando(f"{ctx.author} usou comando !ia. texto: '{text}'")
 

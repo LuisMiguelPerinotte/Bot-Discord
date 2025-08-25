@@ -19,7 +19,7 @@ class General(commands.Cog):
         embed.add_field(name="📅 Criado em", value=guild.created_at.strftime("%d/%m/%Y"), inline=True)
         embed.add_field(name="👑 Dono", value=guild.owner.mention, inline=True)
         embed.set_thumbnail(url=guild.icon.url if guild.icon else None)
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
         
         registrar_uso_comando(f"{ctx.author} usou comando !info.")
 
@@ -32,7 +32,7 @@ class General(commands.Cog):
             description=f"Latência: {latency}ms",
             color=discord.Color.green()
         )
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
         registrar_uso_comando(f"{ctx.author} usou comando !ping. ")
 def setup(bot):
