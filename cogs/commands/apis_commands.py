@@ -95,15 +95,19 @@ class Apis_Commands(commands.Cog):
                         "Authorization": f"bearer {self.key_ia}",
                         "Content-Type": "application/json"
                     },
-                    json=({
-                        "model": "google/gemma-3n-e4b-it:free",
+                    json={
+                        "model": "meta-llama/llama-3.3-8b-instruct:free",
                         "messages": [
+                            {
+                                "role": "system",
+                                "content": "Você é um bot do Discord chamada Sage que responde de maneira curta e engraçada."
+                            },
                             {
                                 "role": "user",
                                 "content": text
                             }
                         ]
-                    })
+                    }
                 )
                 if response.status_code == 200:
                     data = response.json()
