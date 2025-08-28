@@ -14,6 +14,7 @@ logging.basicConfig(
     format="%(asctime)s - %(message)s", 
     handlers=[
         logging.FileHandler(log_file, encoding="utf-8"),
+         logging.StreamHandler()
     ]
 )
 
