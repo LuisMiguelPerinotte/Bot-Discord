@@ -130,13 +130,13 @@ class Apis_Commands(commands.Cog):
 
             registrar_uso_comando(f"{ctx.author} usou comando !ia. texto: '{text}'")
 
-        
-    @commands.command(name="gen-img")
-    async def gen_image_ia(self, ctx, *, text: str):
+# Comando para gerar imagens 
+    @commands.command(name="gen")
+    async def generate_image_ia(self, ctx, *, text: str):
 
         try:
             await ctx.reply(embed=discord.Embed(
-                description="Sua imagem está sendo Gerada!",
+                description=f"{ctx.author.mention} Sua imagem está sendo gerada!",
                 color=discord.Color.blue()
             ))
 
@@ -168,15 +168,54 @@ class Apis_Commands(commands.Cog):
                     await ctx.reply(file=file)
 
                 else:
-                    await ctx.reply("ERRO! Algo Inesperado Aconteceu")    
+                    await ctx.reply("ERRO! Não foi possível gerar a sua imagem.")    
 
             else:
-                await ctx.reply(f"Erro na requisição!")
+                await ctx.reply(f"Erro na requisição! Status Code: {response.status_code}")
 
         except requests.exceptions.RequestException as e:
             await ctx.reply(f"Erro de conexão: {e}")
 
         registrar_uso_comando(f"{ctx.author} usou comando !gen-img. prompt: '{text}'")
+
+# Comando Busca na Wikipedia
+    @commands.command(name="wikipedia")
+    async def wikipedia(self, ctx, *, text: str):
+        url = "https://pt.wikipedia.org/w/api.php"
+        params = {
+            "action": "query",
+            "prop": "extracts",
+            "exintro": True,
+            "explaintext": True,
+            "format": "json",
+            "titles": text
+        }
+        headers = {
+            "User-Agent": "BotDiscord/1.0"
+        }
+
+        try:
+            response = requests.get(url, params=params, headers=headers)
+
+            if response.status_code == 200:
+                data = response.json()
+                pages = data["query"]["pages"]
+                page_id = next(iter(pages))
+                resultado = pages[page_id]["extract"]
+
+                if resultado:
+                    await ctx.reply(ctx.author.mention ,embed=discord.Embed(
+                        description=resultado,
+                        color=discord.Color.blue()
+                    ))
+
+                else:
+                    await ctx.reply(f"Erro ao Buscar Dados. Tente Novamente mais tarde!")
+            else:
+                await ctx.reply(f"Erro na Requisição! Status Code: {response.status_code}")
+
+        except requests.exceptions.RequestException as e:
+            await ctx.reply(f"Erro de conexão: {e}")
 
 def setup(bot):
     bot.add_cog(Apis_Commands(bot))
