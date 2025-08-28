@@ -35,5 +35,6 @@ class General(commands.Cog):
         await ctx.reply(embed=embed)
 
         registrar_uso_comando(f"{ctx.author} usou comando !ping. ")
+        
 def setup(bot):
     bot.add_cog(General(bot))
