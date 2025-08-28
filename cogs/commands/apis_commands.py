@@ -217,5 +217,5 @@ class Apis_Commands(commands.Cog):
         except requests.exceptions.RequestException as e:
             await ctx.reply(f"Erro de conexão: {e}")
 
-def setup(bot):
-    bot.add_cog(Apis_Commands(bot))
+async def setup(bot):
+    await bot.add_cog(Apis_Commands(bot))

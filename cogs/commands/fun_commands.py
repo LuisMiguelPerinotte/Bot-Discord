@@ -42,5 +42,5 @@ class Fun_Commands(commands.Cog):
 
         registrar_uso_comando(f"{ctx.author} usou comando ascii-fontes")
 
-def setup(bot):
-    bot.add_cog(Fun_Commands(bot))
+async def setup(bot):
+    await bot.add_cog(Fun_Commands(bot))

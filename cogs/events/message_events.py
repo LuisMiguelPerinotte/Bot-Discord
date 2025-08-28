@@ -16,5 +16,5 @@ class Message_events(commands.Cog):
         if "pinto" in content:
             await message.add_reaction("🍆")
 
-def setup(bot):
-    bot.add_cog(Message_events(bot))
+async def setup(bot):
+    await bot.add_cog(Message_events(bot))

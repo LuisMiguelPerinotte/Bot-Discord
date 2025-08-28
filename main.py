@@ -28,12 +28,19 @@ async def on_ready():
     print(f"{bot.user} está {Fore.GREEN}online!{Style.RESET_ALL}")
     print(f"Conectado a {len(bot.guilds)} servidores")
 
+
 # Carrega os cogs
 async def load_cogs():
-    cogs = ["cogs.commands.general", "cogs.commands.apis_commands", "cogs.commands.fun_commands", "cogs.events.message_events"]
-    for cog in cogs:
-        bot.load_extension(cog)
+    cogs = [
+        "cogs.commands.general",
+        "cogs.commands.apis_commands",
+        "cogs.commands.fun_commands",
+        "cogs.events.message_events"
+    ]
 
+    for cog in cogs:
+        await bot.load_extension(cog)
+        
 # Fução principal para exucutar o Bot    
 async def main():
     async with bot:
