@@ -11,7 +11,7 @@ init()
 
 # Carregar Key 
 load_dotenv()
-api_key = os.getenv("Discord_API_Key") 
+api_key = os.getenv("DISCORD_API_KEY") 
 
 # Definir Intents
 intents = discord.Intents.default()
