@@ -11,7 +11,7 @@ init()
 
 # Carregar Key 
 load_dotenv()
-api_key = os.getenv("DISCORD_API_KEY") 
+api_key = os.getenv("DISCORD_KEY") 
 
 # Definir Intents
 intents = discord.Intents.default()
@@ -42,4 +42,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-    
