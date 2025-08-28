@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 from logs_generator import registrar_uso_comando
 
 import pyfiglet
@@ -10,37 +11,49 @@ class Fun_Commands(commands.Cog):
         self.bot = bot
 
     # Comando para Artes ASCII 
-    @commands.command(name="ascii")
-    async def transform_ascii(self, ctx, Font: str, *, text: str):  
-        
+    @app_commands.command(name="ascii", description="Arte ASCII com o texto de sua escolha")
+    @app_commands.describe(
+        font="Fonte para que o texto vai ser transformado",
+        text="Texto que vai ser transformado"
+    )
+    @app_commands.choices(font=[
+        app_commands.Choice(name="standard", value="standard"),
+        app_commands.Choice(name="slant", value="slant"),
+        app_commands.Choice(name="3-d", value="3-d"),
+        app_commands.Choice(name="3x5", value="3x5"),
+        app_commands.Choice(name="5lineoblique", value="5lineoblique"),
+        app_commands.Choice(name="alphabet", value="alphabet"),
+        app_commands.Choice(name="banner3-D", value="banner3-D"),
+        app_commands.Choice(name="doh", value="doh"),
+        app_commands.Choice(name="isometric1", value="isometric1"),
+        app_commands.Choice(name="letters", value="letters"),
+        app_commands.Choice(name="alligator", value="alligator"),
+        app_commands.Choice(name="dotmatrix", value="dotmatrix"),
+        app_commands.Choice(name="bubble", value="bubble"),
+        app_commands.Choice(name="bulbhead", value="bulbhead"),
+        app_commands.Choice(name="digital", value="digital")
+    ])
+    async def transform_ascii(self, interactions: discord.Interaction, font: str, *, text: str):  
         try:
-            result = pyfiglet.figlet_format(text, font=Font.lower())
+            await interactions.response.defer()
+
+            result = pyfiglet.figlet_format(text, font=font.lower())
 
         except pyfiglet.FontNotFound:
-            await ctx.reply(f"Fonte '{Font}' não existe! Usando padrão.")
+            await interactions.followup.send(f"Fonte '{font}' não existe! Usando padrão.")
             result = pyfiglet.figlet_format(text, font="standard")
 
-        registrar_uso_comando(f"{ctx.author} usou comando !ascii. fonte: '{Font}', texto: '{text}'")
+        registrar_uso_comando(f"{interactions.user} usou comando /ascii. fonte: '{font}', texto: '{text}'")
 
-        # Envia o arquivo se o resultado for muito grande
+        
         if len(result) > 1990:
-            await ctx.reply(f"{ctx.author.mention} Resultado Grande Demais, Enviando o Arquivo...")
+            await interactions.followup.send(f"Resultado Grande Demais, Enviando o Arquivo...")
             with open("ascii.txt", "w", encoding="utf8") as f:
                 f.write(result)
-            await ctx.reply(file=discord.File("ascii.txt"))
+            await interactions.followup.send(file=discord.File("ascii.txt"))
 
         else:
-            await ctx.reply(f"{ctx.author.mention}```\n{result}\n```")
-
-    @commands.command(name="ascii-fonts")
-    async def asscii_fonts(self, ctx):
-        await ctx.reply(ctx.author.mention, embed=discord.Embed(
-            title="Ascii Fonts 🧑‍🎨",
-            description="- standard\n- slant\n- 3-d\n- 3x5\n- 5lineoblique\n- alphabet\n- banner3-D\n- doh\n- isometric1\n- letters\n- alligator\n- dotmatrix\n- bubble\n- bulbhead\n- digital  ",
-            color=discord.Color.blue()
-        ))
-
-        registrar_uso_comando(f"{ctx.author} usou comando ascii-fontes")
+            await interactions.followup.send(f"```\n{result}\n```")
 
 async def setup(bot):
     await bot.add_cog(Fun_Commands(bot))

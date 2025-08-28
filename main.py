@@ -25,9 +25,9 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 # Informações para o terminal
 @bot.event
 async def on_ready():
-    print(f"{bot.user} está {Fore.GREEN}online!{Style.RESET_ALL}")
-    print(f"Conectado a {len(bot.guilds)} servidores")
-
+    await bot.tree.sync()
+    print(f"🤖 {bot.user} está {Fore.GREEN}online!{Style.RESET_ALL}")
+    print(f"📊 Conectado a {len(bot.guilds)} servidores")
 
 # Carrega os cogs
 async def load_cogs():

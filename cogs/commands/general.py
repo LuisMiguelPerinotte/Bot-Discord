@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord import app_commands
 from logs_generator import registrar_uso_comando
 
 class General(commands.Cog):
@@ -8,9 +9,9 @@ class General(commands.Cog):
         self.bot = bot
 
 # Comando Info do Server
-    @commands.command(name="info")
-    async def server_info(self, ctx):
-        guild = ctx.guild
+    @app_commands.command(name="info", description="Exibe as informações do Server")
+    async def server_info(self,interactions: discord.Interaction):
+        guild = interactions.guild
         embed = discord.Embed(
             title=f"📊 Informações de {guild.name}",
             color=discord.Color.blue()
@@ -19,22 +20,22 @@ class General(commands.Cog):
         embed.add_field(name="📅 Criado em", value=guild.created_at.strftime("%d/%m/%Y"), inline=True)
         embed.add_field(name="👑 Dono", value=guild.owner.mention, inline=True)
         embed.set_thumbnail(url=guild.icon.url if guild.icon else None)
-        await ctx.reply(embed=embed)
+        await interactions.response.send_message(embed=embed)
         
-        registrar_uso_comando(f"{ctx.author} usou comando !info.")
+        registrar_uso_comando(f"{interactions.user} usou comando /info.")
 
 # Comando Ping para ver a latencia do bot    
-    @commands.command(name="ping")
-    async def ping(self, ctx):
+    @app_commands.command(name="ping", description="Exibe a latencia do Bot")
+    async def ping(self, interactions: discord.Interaction):
         latency = round(self.bot.latency * 1000)
         embed = discord.Embed(
             title=" 🏓 Pong!",
             description=f"Latência: {latency}ms",
             color=discord.Color.green()
         )
-        await ctx.reply(embed=embed)
+        await interactions.response.send_message(embed=embed)
 
-        registrar_uso_comando(f"{ctx.author} usou comando !ping. ")
+        registrar_uso_comando(f"{interactions.user} usou comando /ping. ")
 
 async def setup(bot):
     await bot.add_cog(General(bot))
