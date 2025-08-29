@@ -78,7 +78,7 @@ class Apis_Commands(commands.Cog):
         idioma_origem = detect(text)
 
         params = {
-            "q": text,
+            "q": text.lower(),
             "langpair": f"{idioma_origem}|{language}"
         }
         try:
