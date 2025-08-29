@@ -23,7 +23,7 @@ class Fun_Commands(commands.Cog):
         app_commands.Choice(name="3x5", value="3x5"),
         app_commands.Choice(name="5lineoblique", value="5lineoblique"),
         app_commands.Choice(name="alphabet", value="alphabet"),
-        app_commands.Choice(name="banner3-D", value="banner3-D"),
+        app_commands.Choice(name="3d_diagonal", value="3d_diagonal"),
         app_commands.Choice(name="doh", value="doh"),
         app_commands.Choice(name="isometric1", value="isometric1"),
         app_commands.Choice(name="letters", value="letters"),
