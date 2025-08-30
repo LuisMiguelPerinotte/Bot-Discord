@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import asyncio
+from cogs_loader import load_cogs
 
 from dotenv import load_dotenv
 import os
@@ -28,23 +29,11 @@ async def on_ready():
     await bot.tree.sync()
     print(f"🤖 {bot.user} está {Fore.GREEN}online!{Style.RESET_ALL}")
     print(f"📊 Conectado a {len(bot.guilds)} servidores")
-
-# Carrega os cogs
-async def load_cogs():
-    cogs = [
-        "cogs.commands.general",
-        "cogs.commands.apis_commands",
-        "cogs.commands.fun_commands",
-        "cogs.events.message_events"
-    ]
-
-    for cog in cogs:
-        await bot.load_extension(cog)
-        
+    
 # Fução principal para exucutar o Bot    
 async def main():
     async with bot:
-        await load_cogs()
+        await load_cogs(bot)
         await bot.start(api_key)
 
 if __name__ == "__main__":
