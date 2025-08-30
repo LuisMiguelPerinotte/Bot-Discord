@@ -3,7 +3,8 @@ async def load_cogs(bot):
         "cogs.commands.general",
         "cogs.commands.apis_commands",
         "cogs.commands.fun_commands",
-        "cogs.events.message_events"
+        "cogs.events.message_events",
+        "cogs.commands.ia_commands"
     ]
 
     for cog in cogs:

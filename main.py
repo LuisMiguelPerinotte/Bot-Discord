@@ -10,7 +10,7 @@ import os
 from colorama import init, Fore, Style
 init()
 
-# Carregar Key 
+# Carregar Key
 load_dotenv()
 api_key = os.getenv("DISCORD_KEY") 
 
@@ -29,7 +29,7 @@ async def on_ready():
     await bot.tree.sync()
     print(f"🤖 {bot.user} está {Fore.GREEN}online!{Style.RESET_ALL}")
     print(f"📊 Conectado a {len(bot.guilds)} servidores")
-    
+
 # Fução principal para exucutar o Bot    
 async def main():
     async with bot:
