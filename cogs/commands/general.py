@@ -37,5 +37,6 @@ class General(commands.Cog):
 
         registrar_uso_comando(f"{interactions.user} usou comando /ping. ")
 
+
 async def setup(bot):
     await bot.add_cog(General(bot))

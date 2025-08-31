@@ -5,7 +5,7 @@ Este projeto é um bot para Discord escrito em Python, com arquitetura modular b
 ## Funcionalidades
 - Comandos de usuário organizados em cogs
 - Listeners de eventos
-- Integração com APIs externas
+- Integração com APIs externas (clima, tradução, Wikipedia, IA)
 - Logs diários de uso de comandos
 
 ## Estrutura do Projeto
@@ -27,10 +27,12 @@ logs/                    # Logs diários
    ```sh
    pip install -r requirements.txt
    ```
-3. **Configure a chave do Discord:**
+3. **Configure as chaves de API:**
    - Crie um arquivo `.env` na raiz e adicione:
      ```
      DISCORD_KEY=seu_token_aqui
+     HGWEATHER_API_KEY=sua_key_weather
+     OPENROUTER_API_KEY=sua_key_ia
      ```
 4. **Execute o bot:**
    ```sh
@@ -42,6 +44,24 @@ logs/                    # Logs diários
 - Implemente uma classe herdando de `commands.Cog`
 - Adicione o caminho do cog na lista de `cogs_loader.py`
 
+## Comandos Disponíveis
+
+**Comandos Gerais**
+- `/info` — Exibe informações do servidor atual.
+- `/ping` — Mostra a latência do bot.
+
+**Diversão**
+- `/ascii` — Gera arte ASCII com o texto e fonte escolhidos.
+
+**APIs**
+- `/weather` — Mostra o tempo em uma cidade do Brasil.
+- `/translator` — Traduz seu texto para o idioma desejado.
+- `/wikipedia` — Pesquisa rápida na Wikipedia sobre um assunto.
+
+**Inteligência Artificial**
+- `/ia` — Converse com a IA Sage.
+- `/gen` — Gere imagens usando IA.
+
 ## Logs
 - O uso de comandos é registrado em arquivos diários na pasta `logs/`
 - O formato e a escrita dos logs são gerenciados por `logs_generator.py`
@@ -50,10 +70,10 @@ logs/                    # Logs diários
 - `discord.py`
 - `python-dotenv`
 - `colorama`
+- `requests`
+- `langdetect`
+- `pyfiglet`
 
-## Observações
-- Não há suíte de testes automatizados; recomenda-se testar comandos manualmente via Discord.
-- O projeto segue o padrão de não utilizar estado global, mantendo tudo encapsulado nos cogs ou via contexto do bot.
 
 ---
 
