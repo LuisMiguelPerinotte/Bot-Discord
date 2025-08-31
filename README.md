@@ -29,11 +29,11 @@ logs/                    # Logs diários
    ```
 3. **Configure as chaves de API:**
    - Crie um arquivo `.env` na raiz e adicione:
-     ```
-     DISCORD_KEY=seu_token_aqui
-     HGWEATHER_API_KEY=sua_key_weather
-     OPENROUTER_API_KEY=sua_key_ia
-     ```
+   ```
+   DISCORD_KEY=seu_token_aqui
+   HGWEATHER_API_KEY=sua_key_weather
+   OPENROUTER_API_KEY=sua_key_ia
+   ```
 4. **Execute o bot:**
    ```sh
    python main.py
