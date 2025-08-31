@@ -6,7 +6,6 @@ from logs_generator import registrar_uso_comando
 import pyfiglet
 
 class Fun_Commands(commands.Cog):
-
     def __init__(self, bot):
         self.bot = bot
 
@@ -33,27 +32,27 @@ class Fun_Commands(commands.Cog):
         app_commands.Choice(name="bulbhead", value="bulbhead"),
         app_commands.Choice(name="digital", value="digital")
     ])
-    async def transform_ascii(self, interactions: discord.Interaction, font: str, *, text: str):  
+    async def transform_ascii(self, interaction: discord.Interaction, font: str, *, text: str):  
         try:
-            await interactions.response.defer()
+            await interaction.response.defer()
 
             result = pyfiglet.figlet_format(text, font=font.lower())
 
         except pyfiglet.FontNotFound:
-            await interactions.followup.send(f"Fonte '{font}' não existe! Usando padrão.")
+            await interaction.followup.send(f"Fonte '{font}' não existe! Usando padrão.")
             result = pyfiglet.figlet_format(text, font="standard")
 
-        registrar_uso_comando(f"{interactions.user} usou comando /ascii. fonte: '{font}', texto: '{text}'")
+        registrar_uso_comando(f"{interaction.user} usou o comando /ascii no server {interaction.guild.name}. fonte: '{font}', texto: '{text}'")
 
         
         if len(result) > 1990:
-            await interactions.followup.send(f"Resultado Grande Demais, Enviando o Arquivo...")
+            await interaction.followup.send(f"Resultado Grande Demais, Enviando o Arquivo...")
             with open("ascii.txt", "w", encoding="utf8") as f:
                 f.write(result)
-            await interactions.followup.send(file=discord.File("ascii.txt"))
+            await interaction.followup.send(file=discord.File("ascii.txt"))
 
         else:
-            await interactions.followup.send(f"```\n{result}\n```")
+            await interaction.followup.send(f"```\n{result}\n```")
 
 async def setup(bot):
     await bot.add_cog(Fun_Commands(bot))

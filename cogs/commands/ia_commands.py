@@ -6,10 +6,8 @@ import requests
 from logs_generator import registrar_uso_comando
 import base64, re
 from io import BytesIO
-
-from dotenv import load_dotenv
 import os 
-load_dotenv()
+
 
 class IACommands(commands.Cog):
     def __init__(self, bot):
@@ -57,7 +55,7 @@ class IACommands(commands.Cog):
                             description=f"Sua Resposta Gerada Por IA:\n\n{resposta}",
                             color=discord.Color.blue()
                         ))
-                        registrar_uso_comando(f"{interaction.user} usou comando /ia. texto: '{text}'")
+                        registrar_uso_comando(f"{interaction.user} usou o comando /ia no server {interaction.guild.name}. texto: '{text}'")
 
                     else: 
                         await interaction.followup.send("ERRO! Algo Inesperado Aconteceu")
@@ -113,7 +111,7 @@ class IACommands(commands.Cog):
                     file = discord.File(BytesIO(img_data), filename="img_gerada.png")
                     await interaction.followup.send(file=file)
 
-                    registrar_uso_comando(f"{interaction.user} usou comando /gen. prompt: '{text}'")
+                    registrar_uso_comando(f"{interaction.user} usou o comando /gen no server {interaction.guild.name}. prompt: '{text}'")
 
                 else:
                     await interaction.followup.send("ERRO! Não foi possível gerar a sua imagem.")    

@@ -5,10 +5,7 @@ from discord import app_commands
 import requests
 from logs_generator import registrar_uso_comando
 from langdetect import detect
-
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
 class Other_Apis_Commands(commands.Cog):
 
@@ -44,7 +41,7 @@ class Other_Apis_Commands(commands.Cog):
                         description=f"Tempo em {cidade_retornada}🏙️:\n - Condição: {descricao}\n - Temperatura: {temperatura}°C\n - Umidade: {umidade}%\n - Vento: {velocidade_vento}",
                         color=discord.Color.blue()
                     ))
-                    registrar_uso_comando(f"{interaction.user} usou comando !weather. city name: {city_name}")
+                    registrar_uso_comando(f"{interaction.user} uso o comando /weather no server: {interaction.guild.name}. city name: {city_name}")
                     
                 else:
                     await interaction.followup.send(f"Erro Ao Buscar Dados. Tente Novamente Mais Tarde!")
@@ -96,7 +93,7 @@ class Other_Apis_Commands(commands.Cog):
                         color=discord.Color.blue()
                     ))
 
-                    registrar_uso_comando(f"{interaction.user} usou o comando /translate. lingua: '{language}', texto: '{text}'")
+                    registrar_uso_comando(f"{interaction.user} usou o comando /translate no server {interaction.guild.name}. lingua: '{language}', texto: '{text}'")
             
                 else: 
                     await interaction.followup.send("ERRO! Algo Inesperado Aconteceu ")
@@ -138,7 +135,7 @@ class Other_Apis_Commands(commands.Cog):
                         description=resultado,
                         color=discord.Color.blue()
                     ))
-                    registrar_uso_comando(f"{interaction.user} usou comando /wikipedia. Assunto: {text}")
+                    registrar_uso_comando(f"{interaction.user} usou o comando /wikipedia no server {interaction.guild.name}. Assunto: {text}")
 
                 else:
                     await interaction.followup.send(f"Erro ao Buscar Dados. Tente Novamente mais tarde!")

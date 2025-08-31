@@ -24,7 +24,7 @@ class HelpCommand(commands.Cog):
                     inline=False
                 )
         await interaction.response.send_message(embed=embed)
-        registrar_uso_comando(f"{interaction.user} usou comando /help. ")
+        registrar_uso_comando(f"{interaction.user} usou o comando /help no server {interaction.guild.name}. ")
 
 async def setup(bot):
     await bot.add_cog(HelpCommand(bot))
