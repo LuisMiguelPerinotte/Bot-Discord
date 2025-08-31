@@ -90,8 +90,13 @@ class IACommands(commands.Cog):
                 json={
                         "model": "google/gemini-2.5-flash-image-preview:free",
                         "messages": [
-                            {"role": "user", "content": [
-                                {"type": "text", "text": text}
+                            {
+                            "role": "user", 
+                             "content": [
+                                {
+                                "type": "text", 
+                                 "text": text
+                                 }
                             ]}
                         ]
                     }
