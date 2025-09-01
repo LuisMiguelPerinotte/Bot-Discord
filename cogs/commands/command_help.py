@@ -6,7 +6,8 @@ from logs_generator import registrar_uso_comando
 class HelpCommand(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+        
+# Comando Help
     @app_commands.command(name="help", description="Lista todos os comandos disponíveis")
     async def help(self, interaction: discord.Interaction):
         embed = discord.Embed(

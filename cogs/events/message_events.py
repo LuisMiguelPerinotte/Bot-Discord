@@ -13,8 +13,8 @@ class Message_events(commands.Cog):
             return
         
         content = message.content.lower()
-        if "pinto" in content:
-            await message.add_reaction("🍆")
+        if "sage" in content:
+            await message.add_reaction("😶‍🌫️")
 
 async def setup(bot):
     await bot.add_cog(Message_events(bot))

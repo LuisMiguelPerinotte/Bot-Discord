@@ -1,3 +1,4 @@
+# Função para Carregar os cogs
 async def load_cogs(bot):
     cogs = [
         "cogs.commands.general",

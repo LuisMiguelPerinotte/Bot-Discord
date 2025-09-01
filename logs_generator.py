@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 import requests
 
-# --- Handler customizado do Discord ---
+# Handler customizado Discord 
 WEBHOOK_URL = os.getenv("WEBHOOK_DISCORD_LOG")
 
 class DiscordWebhookHandler(logging.Handler):
@@ -14,7 +14,7 @@ class DiscordWebhookHandler(logging.Handler):
         except Exception as e:
             print("Falha ao enviar log para Discord:", e)
 
-# --- Logs locais (arquivo diário) ---
+# Logs locais 
 log_dir = "logs"
 os.makedirs(log_dir, exist_ok=True)
 log_file = os.path.join(log_dir, f"uso_comando_{datetime.now().strftime('%Y-%m-%d')}.txt")
@@ -27,7 +27,7 @@ logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler(log_file, encoding="utf-8")
 file_handler.setLevel(logging.INFO)
 
-# Handler Discord (agora pega INFO também)
+# Handler Discord 
 discord_handler = DiscordWebhookHandler()
 discord_handler.setLevel(logging.INFO)
 
