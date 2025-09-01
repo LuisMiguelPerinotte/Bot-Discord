@@ -39,11 +39,11 @@ logs/                    # Logs diários
      ```
 3. **Configure as chaves de API:**
    - Crie um arquivo `.env` na raiz e adicione:
-     ```
-     DISCORD_KEY=seu_token_aqui
-     HGWEATHER_API_KEY=sua_key_weather
-     OPENROUTER_API_KEY=sua_key_ia
-     ```
+   ```
+   DISCORD_KEY=seu_token_aqui
+   HGWEATHER_API_KEY=sua_key_weather
+   OPENROUTER_API_KEY=sua_key_ia
+   ```
 4. **Execute o bot:**
    ```sh
    python main.py
@@ -69,7 +69,7 @@ logs/                    # Logs diários
 - `/wikipedia` — Pesquisa rápida na Wikipedia sobre um assunto.
 
 **Inteligência Artificial**
-- `/ia` — Converse com a IA Sage.
+- `/ia` — Converse com a IA Sage(nome dado ao bot).
 - `/gen` — Gere imagens usando IA.
 
 ## Logs
@@ -88,14 +88,5 @@ logs/                    # Logs diários
 - `langdetect`
 - `pyfiglet`
 
-## Sugestões de Melhoria
-- Centralizar configurações em um arquivo `config.py`.
-- Adicionar listener global para erros e mensagens amigáveis.
-- Registrar erros em arquivo separado para facilitar debug.
-- Iniciar testes automatizados para funções críticas.
-- Expandir a documentação com exemplos de uso e contribuição.
-- Adicionar checks de permissões para comandos sensíveis.
-
----
 
 Este projeto é aberto para consulta, aprendizado e inspiração. Sinta-se livre para abrir issues, sugerir melhorias ou tirar dúvidas. Se quiser usar parte do código, cite o autor e entre em contato!
