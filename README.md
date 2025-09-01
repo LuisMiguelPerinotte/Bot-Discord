@@ -24,17 +24,18 @@ logs/                    # Logs diários
 ```
 
 ## Como executar
-1. **Crie e ative o ambiente virtual:**
+1. **Crie e ative o ambiente virtual (Se for usar o pip):**
    - Windows: `discord_bot\Scripts\activate`
    - **Se for instalar as dependências com uv, não é necessário criar ambiente virtual.**
    
 2. **Instale as dependências:**
    - Usando uv (recomendado, mais rápido e seguro):
      ```sh
-     uv pip install -r requirements.txt
+     uv sync
      ```
-   - Usando pip tradicional:
+   - Se quiser usar o pip tradicional:
      ```sh
+     uv export --without-hashes > requirements.txt
      pip install -r requirements.txt
      ```
 3. **Configure as chaves de API:**
@@ -69,7 +70,7 @@ logs/                    # Logs diários
 - `/wikipedia` — Pesquisa rápida na Wikipedia sobre um assunto.
 
 **Inteligência Artificial**
-- `/ia` — Converse com a IA Sage(nome dado ao bot).
+- `/ia` — Converse com a IA Sage (nome dado ao bot).
 - `/gen` — Gere imagens usando IA.
 
 ## Logs
