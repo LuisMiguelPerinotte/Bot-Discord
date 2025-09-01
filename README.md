@@ -81,14 +81,5 @@ logs/                    # Logs diários
 - `langdetect`
 - `pyfiglet`
 
-## Sugestões de Melhoria
-- Centralizar configurações em um arquivo `config.py`.
-- Adicionar listener global para erros e mensagens amigáveis.
-- Registrar erros em arquivo separado para facilitar debug.
-- Iniciar testes automatizados para funções críticas.
-- Expandir a documentação com exemplos de uso e contribuição.
-- Adicionar checks de permissões para comandos sensíveis.
-
----
 
 Este projeto é aberto para consulta, aprendizado e inspiração. Sinta-se livre para abrir issues, sugerir melhorias ou tirar dúvidas. Se quiser usar parte do código, cite o autor e entre em contato!
