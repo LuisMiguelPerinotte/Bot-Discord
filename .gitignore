@@ -274,8 +274,8 @@ docker-compose.dev.yml
 .env.local
 .env.production
 
-# ==================== NODE.JS (caso use ferramentas JS) ====================
-# Node modules (se usar npm para algumas ferramentas)
+# ==================== NODE.JS  ====================
+# Node modules 
 node_modules/
 npm-debug.log*
 yarn-debug.log*
