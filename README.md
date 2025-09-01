@@ -47,7 +47,7 @@ logs/                    # Logs diários
    ```
 4. **Execute o bot:**
    ```sh
-   python main.py
+   uv run main.py
    ```
 
 ## Como adicionar comandos/eventos
