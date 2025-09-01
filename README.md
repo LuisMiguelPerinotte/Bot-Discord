@@ -1,6 +1,9 @@
 # Bot Discord Modular
 
-Este projeto é um bot para Discord escrito em Python, com arquitetura modular baseada em cogs para facilitar manutenção, extensão e organização.
+Este projeto foi desenvolvido por mim, Luis Miguel Perinotte, com o objetivo de aprendizado em Python, APIs e desenvolvimento de bots para Discord. O código está público para fins de portfólio, estudo e inspiração para outros desenvolvedores.
+
+## Sobre o Projeto
+Este bot utiliza arquitetura modular baseada em cogs, facilitando manutenção, extensão e organização do código. Ele integra diversas APIs externas e registra logs de uso dos comandos.
 
 ## Funcionalidades
 - Comandos de usuário organizados em cogs
@@ -29,11 +32,11 @@ logs/                    # Logs diários
    ```
 3. **Configure as chaves de API:**
    - Crie um arquivo `.env` na raiz e adicione:
-   ```
-   DISCORD_KEY=seu_token_aqui
-   HGWEATHER_API_KEY=sua_key_weather
-   OPENROUTER_API_KEY=sua_key_ia
-   ```
+     ```
+     DISCORD_KEY=seu_token_aqui
+     HGWEATHER_API_KEY=sua_key_weather
+     OPENROUTER_API_KEY=sua_key_ia
+     ```
 4. **Execute o bot:**
    ```sh
    python main.py
@@ -74,7 +77,14 @@ logs/                    # Logs diários
 - `langdetect`
 - `pyfiglet`
 
+## Sugestões de Melhoria
+- Centralizar configurações em um arquivo `config.py`.
+- Adicionar listener global para erros e mensagens amigáveis.
+- Registrar erros em arquivo separado para facilitar debug.
+- Iniciar testes automatizados para funções críticas.
+- Expandir a documentação com exemplos de uso e contribuição.
+- Adicionar checks de permissões para comandos sensíveis.
 
 ---
 
-Sinta-se livre para abrir issues ou contribuir com novos comandos e melhorias!
+Este projeto é aberto para consulta, aprendizado e inspiração. Sinta-se livre para abrir issues, sugerir melhorias ou tirar dúvidas. Se quiser usar parte do código, cite o autor e entre em contato!
