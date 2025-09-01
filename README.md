@@ -62,7 +62,7 @@ logs/                    # Logs diários
 - `/wikipedia` — Pesquisa rápida na Wikipedia sobre um assunto.
 
 **Inteligência Artificial**
-- `/ia` — Converse com a IA Sage.
+- `/ia` — Converse com a IA Sage(nome dado ao bot).
 - `/gen` — Gere imagens usando IA.
 
 ## Logs
