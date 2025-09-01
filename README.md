@@ -68,6 +68,10 @@ logs/                    # Logs diários
 ## Logs
 - O uso de comandos é registrado em arquivos diários na pasta `logs/`
 - O formato e a escrita dos logs são gerenciados por `logs_generator.py`
+- Para receber logs no Discord via webhook, adicione a variável `WEBHOOK_DISCORD_LOG` com a URL do seu webhook no arquivo `.env`:
+  ```
+  WEBHOOK_DISCORD_LOG=https://discord.com/api/webhooks/...
+  ```
 
 ## Dependências principais
 - `discord.py`
