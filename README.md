@@ -26,10 +26,17 @@ logs/                    # Logs diários
 ## Como executar
 1. **Crie e ative o ambiente virtual:**
    - Windows: `discord_bot\Scripts\activate`
+   - **Se for instalar as dependências com uv, não é necessário criar ambiente virtual.**
+   
 2. **Instale as dependências:**
-   ```sh
-   pip install -r requirements.txt
-   ```
+   - Usando uv (recomendado, mais rápido e seguro):
+     ```sh
+     uv pip install -r requirements.txt
+     ```
+   - Usando pip tradicional:
+     ```sh
+     pip install -r requirements.txt
+     ```
 3. **Configure as chaves de API:**
    - Crie um arquivo `.env` na raiz e adicione:
      ```
