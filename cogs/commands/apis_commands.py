@@ -8,7 +8,6 @@ from langdetect import detect
 import os
 
 class Other_Apis_Commands(commands.Cog):
-
     def __init__(self, bot):
         self.bot = bot
         self.key_weather = os.getenv("HGWEATHER_API_KEY")
