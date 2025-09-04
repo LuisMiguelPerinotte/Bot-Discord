@@ -23,6 +23,16 @@ cogs/
 logs/                    # Logs diários
 ```
 
+## Como criar seu bot no Discord
+Antes de executar o projeto, você precisa criar um bot e obter o token de autenticação. Para isso:
+1. Acesse o site oficial de desenvolvedores do Discord: https://discord.com/developers
+2. Faça login com sua conta Discord.
+3. Clique em "Applications" e depois em "New Application" para criar um novo app.
+4. Dê um nome ao seu bot e salve.
+5. No menu lateral, vá em "Bot" e clique em "Add Bot".
+6. Copie o token do bot e coloque no arquivo `.env` como `DISCORD_KEY`.
+7. Configure permissões e adicione o bot ao seu servidor.
+
 ## Como executar
 1. **Crie e ative o ambiente virtual (Se for usar o pip):**
    - Windows: `discord_bot\Scripts\activate`
