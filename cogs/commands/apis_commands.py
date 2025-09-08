@@ -4,7 +4,6 @@ from discord import app_commands
 
 import requests
 from logs_generator import registrar_uso_comando
-from langdetect import detect
 import os
 
 class Other_Apis_Commands(commands.Cog):
@@ -50,9 +49,7 @@ class Other_Apis_Commands(commands.Cog):
 
 
 # Comando para traduzir o texto enviado
-    @app_commands.command(name="translator", description="Traduza o seu texto para a lingua de sua escolha")
-    @app_commands.describe(language="Para qual lingua traduzir", text="O texto a ser traduzido")
-    @app_commands.choices(language=[
+    escolhas_linguas = [
         app_commands.Choice(name="Inglês", value="en"),
         app_commands.Choice(name="Espanhol", value="es"),
         app_commands.Choice(name="Português", value="pt"),
@@ -68,14 +65,20 @@ class Other_Apis_Commands(commands.Cog):
         app_commands.Choice(name="Bengali", value="bn"),
         app_commands.Choice(name="Urdu", value="ur"),
         app_commands.Choice(name="Turco", value="tr")
-    ])
-    async def translator(self, interaction: discord.Interaction, language: str, *, text: str):
+        ]
+
+
+    @app_commands.command(name="translator", description="Traduza o seu texto para a lingua de sua escolha")
+    @app_commands.describe(language_from="Lingua de qual vai tarduzir", language_to="Para qual lingua traduzir", text="O texto a ser traduzido")
+    @app_commands.choices(language_from=escolhas_linguas)
+    @app_commands.choices(language_to=escolhas_linguas)
+    
+    async def translator(self, interaction: discord.Interaction, language_from: str, language_to: str, *, text: str):
         url = "https://api.mymemory.translated.net/get"
-        idioma_origem = detect(text)
 
         params = {
-            "q": text.lower(),
-            "langpair": f"{idioma_origem}|{language}"
+            "q": text,
+            "langpair": f"{language_from}|{language_to}"
         }
         try:
             await interaction.response.defer()
@@ -92,7 +95,7 @@ class Other_Apis_Commands(commands.Cog):
                         color=discord.Color.blue()
                     ))
 
-                    registrar_uso_comando(f"{interaction.user} usou o comando /translate no server {interaction.guild.name}. lingua: '{language}', texto: '{text}'")
+                    registrar_uso_comando(f"{interaction.user} usou o comando /translate no server {interaction.guild.name}. lingua destino: '{language_to}', texto: '{text}'")
             
                 else: 
                     await interaction.followup.send("ERRO! Algo Inesperado Aconteceu ")
