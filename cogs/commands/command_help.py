@@ -24,6 +24,8 @@ class HelpCommand(commands.Cog):
                     value="\n".join(comandos),
                     inline=False
                 )
+        embed.set_footer(text="Criado por miguelxl 😼")  # Footer só texto
+
         await interaction.response.send_message(embed=embed)
         registrar_uso_comando(f"{interaction.user} usou o comando /help no server {interaction.guild.name}. ")
 

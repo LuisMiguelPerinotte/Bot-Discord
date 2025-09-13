@@ -30,6 +30,12 @@ async def on_ready():
     print(f"🤖 {bot.user} está {Fore.GREEN}online!{Style.RESET_ALL}")
     print(f"📊 Conectado a {len(bot.guilds)} servidores")
 
+    await bot.change_presence(
+        activity=discord.CustomActivity(
+            name="🐈 Sage Bot | /help"
+        )
+    )
+
 # Fução principal para exucutar o Bot    
 async def main():
     async with bot:

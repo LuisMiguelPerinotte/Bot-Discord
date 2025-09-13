@@ -4,17 +4,20 @@ from discord import app_commands
 from logs_generator import registrar_uso_comando
 
 import pyfiglet
+import ascii_magic
+from PIL import Image
+from io import BytesIO
 
 class Fun_Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     # Comando para Artes ASCII 
-    @app_commands.command(name="ascii", description="Arte ASCII com o texto de sua escolha")
+    @app_commands.command(name="txt-ascii", description="Arte ASCII com o texto de sua escolha")
     @app_commands.describe(
         font="Fonte para que o texto vai ser transformado",
         text="Texto que vai ser transformado"
-    )
+        )
     @app_commands.choices(font=[
         app_commands.Choice(name="standard", value="standard"),
         app_commands.Choice(name="slant", value="slant"),
@@ -32,7 +35,7 @@ class Fun_Commands(commands.Cog):
         app_commands.Choice(name="bulbhead", value="bulbhead"),
         app_commands.Choice(name="digital", value="digital")
     ])
-    async def transform_ascii(self, interaction: discord.Interaction, font: str, *, text: str):  
+    async def txt_to_ascii(self, interaction: discord.Interaction, font: str, *, text: str):  
         try:
             await interaction.response.defer()
 
@@ -53,6 +56,7 @@ class Fun_Commands(commands.Cog):
 
         else:
             await interaction.followup.send(f"```\n{result}\n```")
+
 
 async def setup(bot):
     await bot.add_cog(Fun_Commands(bot))

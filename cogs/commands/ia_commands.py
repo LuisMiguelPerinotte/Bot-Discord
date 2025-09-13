@@ -65,5 +65,6 @@ class IACommands(commands.Cog):
             except requests.exceptions.RequestException as e:
                 await interaction.followup.send(f"Erro de conexão: {e}")
 
+
 async def setup(bot):
     await bot.add_cog(IACommands(bot))
